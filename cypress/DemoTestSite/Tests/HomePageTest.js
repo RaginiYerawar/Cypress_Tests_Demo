@@ -1,14 +1,29 @@
 ///<reference types='Cypress' />
 describe('Test suite for HomePage', ()=>{
+    
     let testData
     before(function(){
-        cy.visit(Cypress.env("url"))
-        cy.fixture('example').then(function(data){
+        cy.fixture('HomePageTestData').then(function(data){
             testData=data
         })
-        })
+    })
+    
+    beforeEach(function(){
+        cy.visit(Cypress.env("url"))
+        
+    })
+    
+    it('Verify Alert banner is present',()=>{
+        cy.get('#collapseBanner').should('be.visible')
+    })
+
+    it('Verify Alert banner collapses after clicking on the button',()=>{
+        cy.get('#collapseBanner [type="button"]').click()
+        cy.get('#collapseBanner').should('not.exist')
+    })
 
     it('Verify text present on the alert banner', ()=>{
+        cy.wait(2000)
         cy.get('#collapseBanner h1').invoke('text').then(text => expect(text).to.eq(testData.WelcomeHeader))
         cy.get('#collapseBanner h4').should('have.text', testData.WelcomeSubheader)
         cy.get(':nth-child(2) > :nth-child(1) > p').invoke('text').then(text=>expect(text).to.contain(testData.ExplorationText))
@@ -26,11 +41,20 @@ describe('Test suite for HomePage', ()=>{
             let getStartedFullText = text1 + text2 + text3
             expect(getStartedFullText).to.eq(testData.GetStartedText)
         })
-        cy.get('#footer p').invoke('text').then(text => expect(text).to.eq(testData.GetFooterText))
-        cy.get('.hotel-description p').invoke('text').then(text => expect(text).to.eq(testData.GetWelcomeText))
+        
+    })
+
+    it('Verify text present on HomePage', ()=>{
+        cy.wait(1000)
+        cy.get('#footer p').invoke('text').then(text => expect(text).to.eq(testData.FooterText))
+        cy.get('.hotel-description p').invoke('text').then(text => expect(text).to.eq(testData.WelcomeText))
         cy.get('.room-header h2').invoke('text').then(text => expect(text).to.eq(testData.RoomsHeader))
         cy.get('.hotel-room-info h3').invoke('text').then(text => expect(text).to.eq(testData.RoomTitle))
         cy.get('.hotel-room-info p').invoke('text').then(text => expect(text).to.eq(testData.RoomDescription))
+    })
+
+    it('Verify Welcome image present', ()=>{
+        cy.get('.hotel-logoUrl').should('have.attr', 'src', testData.WelcomeImage)
     })
 
 
