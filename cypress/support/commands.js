@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('FillForm', (data, scenario) => { 
+cy.get('[data-testid="ContactName"]').type(data[0])
+cy.get('[data-testid="ContactEmail"]').type(data[1])
+cy.get('[data-testid="ContactPhone"]').type(data[2])
+cy.get('[data-testid="ContactSubject"]').type(data[3])
+cy.get('[data-testid="ContactDescription"]').type(data[4])
+cy.get('#submitContact').click()
+if(scenario=='success'){
+cy.get('div.row > div:nth-child(2) >div').then((element)=>{
+    let text1 = element.find('h2').text()
+    let text2 = element.find('p').text()
+    let successMessage = text1 + text2
+    expect(successMessage).to.include(data[5])
+})}
+else{
+    cy.get('.alert').then((element)=>{
+        expect(element.find('p').text()).to.include(data[5])
+    })
+}
+})

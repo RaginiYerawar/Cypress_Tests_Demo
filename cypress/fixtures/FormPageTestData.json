@@ -1,3 +1,5 @@
 {
-    "InputBoxesPlaceholders" : ["Name", "Email", "Phone", "Subject"]
+    "InputBoxesPlaceholders" : ["Name", "Email", "Phone", "Subject", ""],
+    "PositiveData" : ["Bob", "fake@fakeemail.com", "012345678901", "Interest in this room", "Hi, I'm looking to book a room here.", "Thanks for getting in touch Bob!We'll get back to you aboutInterest in this roomas soon as possible."],
+    "NoEmailData" : ["Bob", " ", "012345678901", "Interest in this room", "Hi, I'm looking to book a room here.", "Email may not be blank"]
 }

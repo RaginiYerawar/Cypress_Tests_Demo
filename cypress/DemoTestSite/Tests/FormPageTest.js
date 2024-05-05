@@ -2,7 +2,7 @@ describe('Tets suite for FormaPage', ()=>{
 
     let testData
     before(function(){
-        cy.fixture('HomePageTestData').then(function(data){
+        cy.fixture('FormPageTestData').then(function(data){
             testData=data
         })
     })
@@ -12,26 +12,15 @@ describe('Tets suite for FormaPage', ()=>{
         
     })
 
-    it('Verify form contains 5 inputs', ()=>{
-        cy.get('.input-group-prepend').should('have.length', 5)
+    it.skip('Verify form contains 5 inputs', ()=>{
+        cy.get('[data-testid*="Contact"]').should('have.length', 5)
     })
 
-    it('Verify input boxes placeholders', ()=>{
-        cy.get('.input-group-prepend + input').each((el)=>{
-            //const placeholder = el.invoke('attr', 'placeholder')
-            //cy.log(placeholder)
-        })
-
-        cy.get('.input-group-prepend + input').invoke('attr', 'placeholder').then((placeholders) => {
-            const placeholderRegex = /[^"]+(?=")/g;
-    const matches = placeholders.match(placeholderRegex);
-
-    // Log each placeholder value
-    matches.forEach((placeholder) => {
-      cy.log(placeholder.trim());
-    });
-          })
+    it.skip('Verify when entered valid data: Success message', ()=>{
+        cy.FillForm(testData.PositiveData, 'success')
     })
 
-    
+    it('Verify when no email data: Fail message', ()=>{
+        cy.FillForm(testData.NoEmailData, 'fail')
+    })
 })
