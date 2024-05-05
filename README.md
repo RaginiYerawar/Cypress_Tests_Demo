@@ -24,7 +24,7 @@ https://automationintesting.online/
 
     bash
 
-    git clone https://github.com/KyleFox2/DemoSeleniumTest.git
+    git clone https://github.com/RaginiYerawar/demo_cypress_test
 
     Open the project in your preferred IDE (e.g., Visual Studio).
 
