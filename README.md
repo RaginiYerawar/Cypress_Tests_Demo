@@ -1,4 +1,4 @@
-# DemoSeleniumTest
+# DemoCypressTest
 
 **Description:**
 This project demonstrates the use of automated testing using Cypress Javascript. The project includes a sample web application with multiple pages, each representing different scenarios commonly encountered in web testing. The automated tests are designed to showcase various tests in Cypress, such as interacting with form elements, handling alerts, and validating page content.
