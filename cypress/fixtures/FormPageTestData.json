@@ -1,5 +1,7 @@
 {
     "InputBoxesPlaceholders" : ["Name", "Email", "Phone", "Subject", ""],
     "PositiveData" : ["Bob", "fake@fakeemail.com", "012345678901", "Interest in this room", "Hi, I'm looking to book a room here.", "Thanks for getting in touch Bob!We'll get back to you aboutInterest in this roomas soon as possible."],
-    "NoEmailData" : ["Bob", " ", "012345678901", "Interest in this room", "Hi, I'm looking to book a room here.", "Email may not be blank"]
+    "NoEmailData" : ["Bob", " ", "012345678901", "Interest in this room", "Hi, I'm looking to book a room here.", "Email may not be blank"],
+    "InvalidPhoneNumberData" : ["Bob", "fake@fakeemail.com", "01234", "Interest in this room", "Hi, I'm looking to book a room here.", "Phone must be between 11 and 21 characters."],
+    "ShortMessageData" : ["Bob", "fake@fakeemail.com", "012345678901", "Interest in this room", "Hi, I'm Bob.", "Message must be between 20 and 2000 characters."]
 }
